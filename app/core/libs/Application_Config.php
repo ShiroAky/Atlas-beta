@@ -2,6 +2,10 @@
 
     namespace App\Core\Libs;
 
+    /**
+     * Application_Config class
+     * @package Application_Config
+     */
     class Application_Config
     {
 

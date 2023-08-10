@@ -2,8 +2,15 @@
 
     namespace App\Core\Libs;
 
+    /**
+     * Necessary packages
+     */
     use Exception;
 
+    /**
+     * Render class
+     * @package Render
+     */
     class Render
     {
 

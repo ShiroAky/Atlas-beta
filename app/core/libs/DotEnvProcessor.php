@@ -2,8 +2,15 @@
 
     namespace App\Core\Libs;
 
+    /**
+     * Necessary packages
+     */
     use Exception;
 
+    /**
+     * DotEnvProcessor class
+     * @package DotEnvProcessor
+     */
     class DotEnvProcessor 
     {
 

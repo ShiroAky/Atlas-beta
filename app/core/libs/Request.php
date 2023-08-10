@@ -2,6 +2,10 @@
 
     namespace App\Core\Libs;
 
+    /**
+     * Request class
+     * @package Request
+     */
     class Request
     {
 

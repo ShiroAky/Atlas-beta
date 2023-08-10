@@ -2,10 +2,17 @@
 
     namespace App\Core;
 
+    /**
+     * Necessary packages
+     */
     use Exception;
     use App\Core\Libs\DotEnvProcessor as DotEnv;
     use App\Core\Libs\Application_Config as Config;
 
+    /**
+     * Application class
+     * @package Application
+     */
     class Application
     {
 
@@ -38,7 +45,13 @@
 
         }
 
-        private function load_all_files_from($path)
+        /**
+         * Load all files from the specified directory
+         *
+         * @param string $path
+         * @return void
+         */
+        private function load_all_files_from(string $path)
         {
             try {
 

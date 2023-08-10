@@ -2,6 +2,10 @@
 
     namespace App\Core\Libs;
 
+    /**
+     * Response class
+     * @package Response
+     */
     class Response
     {
 
