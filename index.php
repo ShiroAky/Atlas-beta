@@ -14,5 +14,3 @@
      * Start the application:
      */
     $app->start(application: 'Atlas Framework');
-
-    echo $_ENV['APP_TECNOLOGY'];
