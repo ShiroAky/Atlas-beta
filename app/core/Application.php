@@ -3,26 +3,32 @@
     namespace App\Core;
 
     use Exception;
-    use App\Core\Libs\DotEnvProcessor;
-    use App\Core\Libs\Application_Config;
+    use App\Core\Libs\DotEnvProcessor as DotEnv;
+    use App\Core\Libs\Application_Config as Config;
 
     class Application
     {
 
+        /**
+         * Start the application process
+         *
+         * @param string $application
+         * @return void
+         */
         public function start(string $application)
         {
 
             /**
              * Instances
              */
-            $dotenv = new DotEnvProcessor();
-            $config = new Application_Config();
+            $dotenv = new DotEnv();
+            $config = new Config();
 
             /**
              * Cofigurations
              */
-            $config->use_cors(true);
-            $config->hide_mistakes(true);
+            $config->use_cors(option: true);
+            $config->hide_mistakes(option: true);
 
             /**
              * Executions
