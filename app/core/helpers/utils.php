@@ -25,6 +25,17 @@
     }
 
     /**
+    * The function in charge of rendering the assigned error page
+    * @param int $error error path
+    * @param array|object $data content data
+    */
+    function render_error(int $error, array | object $data = []) 
+    {
+        $render = new Render();
+        echo $render->error(error: $error, data: $data);
+    }
+
+    /**
     * The function in charge of rendering the data/value that you assign to it in json format
     * @param string|array|object $data the data you want to convert to json
     */

@@ -28,6 +28,13 @@
         private string $modulePath = __DIR__ . '/../../../views/modules/';
 
         /**
+         * Errors path
+         *
+         * @var string
+         */
+        private string $errorPath = __DIR__ . '/../../../views/errors/_';
+
+        /**
          * Methods
          */
 
@@ -52,6 +59,20 @@
 
             if (!file_exists($path)) {
                 throw new Exception("View file does not exist: $module");
+            }
+
+            ob_start();
+            extract($data);
+            require_once $path;
+            return ob_get_clean();
+        }
+
+        public function error(int $error, array | object $data = []): string
+        {
+            $path = $this->errorPath . trim(str_replace('_', '', $error)) . '.php';
+
+            if (!file_exists($path)) {
+                throw new Exception("View file does not exist: $error");
             }
 
             ob_start();

@@ -8,11 +8,9 @@
     /**
      * Necessary controllers
      */
-
+    use App\Http\Controllers\HomeController;
 
     /**
      * Application routes
      */
-    Router::get(path: '/', callback: function () {
-        return view(view: 'welcome');
-    });
+    Router::get(path: '/', callback: [ HomeController::class, 'index' ]);
