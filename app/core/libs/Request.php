@@ -12,7 +12,7 @@
         /**
          * gets the current path from the URI
          *
-         * @return void
+         * @return string
          */
         public static function getPath()
         {
@@ -35,7 +35,7 @@
         /**
          * get the http method of the request
          *
-         * @return void
+         * @return string
          */
         public static function HttpMethod()
         {
@@ -45,7 +45,7 @@
         /**
          * get full URI of current url
          *
-         * @return void
+         * @return string
          */
         public static function URI()
         {

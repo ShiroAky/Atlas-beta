@@ -3,6 +3,7 @@
     use App\Core\Libs\Render;
 
     /**
+    * The function in charge of rendering the assigned view
     * @param string $view view path
     * @param array|object $data content data
     */
@@ -13,6 +14,7 @@
     }
 
     /**
+    * The function in charge of rendering the assigned module/component 
     * @param string $module module path
     * @param array|object $data content data
     */
@@ -23,6 +25,7 @@
     }
 
     /**
+    * The function in charge of rendering the data/value that you assign to it in json format
     * @param string|array|object $data the data you want to convert to json
     */
     function render_json(string | array | object $data)
