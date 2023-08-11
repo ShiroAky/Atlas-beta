@@ -21,7 +21,7 @@
          */
         private static array $routes = [];
 
-        public static function get(string $path, callable $callback)
+        public static function get(string $path, $callback)
         {
             $method = Request::HttpMethod();
             if ($method !== 'GET') return;
@@ -30,7 +30,7 @@
             self::$routes[$path] = $callback;
         }
 
-        public static function post(string $path, callable $callback)
+        public static function post(string $path, $callback)
         {
             $method = Request::HttpMethod();
             if ($method !== 'POST') return;
@@ -60,8 +60,8 @@
 
             if (!is_callable($callback) || !$callback) {
                 // Response::set_status_code(404);
-                render_error(404);
-                exit;
+                return render_error(404);
+                // exit;
             }
 
             call_user_func($callback, ...$params);
