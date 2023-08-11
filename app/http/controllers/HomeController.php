@@ -5,18 +5,19 @@
     /**
      * Necessary packages
      */
-    use App\Core\Interfaces\Controller;
+    use App\Http\Controllers\BaseController;
+    
 
     /**
-     * baseController class
-     * @package baseController
+     * HomeController class
+     * @package HomeController
      */
-    class BaseController implements Controller
+    class HomeController extends BaseController
     {
 
         public static function index()
         {
-            
+            return view('welcome');
         }
 
         public static function show()
