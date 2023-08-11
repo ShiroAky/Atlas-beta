@@ -40,10 +40,15 @@
             $dotenv->loadEnvFile(filePath: __DIR__ . '/../../.env');
 
             /**
+             * Load necesary files
+             */
+            $loadRoutesFiles = $this->load_all_files_from(path: __DIR__ . '/../../routes/');
+            $loadHelpersFiles = $this->load_all_files_from(path: __DIR__ . '/../../app/core/helpers/');
+            $loadInterfacesFiles = $this->load_all_files_from(path: __DIR__ . '/../../app/core/Interfaces/');
+
+            /**
              * Executions
              */
-            $loadHelpersFiles = $this->load_all_files_from(path: __DIR__ . '/../../app/core/helpers/');
-            $loadRoutesFiles = $this->load_all_files_from(path: __DIR__ . '/../../routes/');
             Router::resolve();
 
         }

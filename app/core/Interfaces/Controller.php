@@ -3,7 +3,7 @@
     namespace App\Core\Interfaces;
 
     /**
-     * Application class
+     * Controller interface
      * @package Controller
      */
     interface Controller
