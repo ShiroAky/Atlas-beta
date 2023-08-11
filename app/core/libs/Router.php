@@ -7,7 +7,6 @@
      */
     use App\Core\Libs\Request;
     use App\Core\Libs\Response;
-    use App\Core\Libs\Render;
 
     /**
      * Router class
