@@ -6,7 +6,7 @@
      * Necessary packages
      */
     use App\Http\Controllers\BaseController;
-    
+    use App\Core\Libs\Request;
 
     /**
      * HomeController class
@@ -17,7 +17,8 @@
 
         public static function index()
         {
-            return view('welcome');
+            // return view('welcome');
+            print_r(Request::get_request_body());
         }
 
         public static function show()

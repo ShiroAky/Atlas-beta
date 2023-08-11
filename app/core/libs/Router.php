@@ -59,9 +59,9 @@
             }
 
             if (!is_callable($callback) || !$callback) {
-                // Response::set_status_code(404);
                 return render_error(404);
-                // exit;
+                Response::set_status_code(404);
+                exit;
             }
 
             call_user_func($callback, ...$params);
