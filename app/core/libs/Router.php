@@ -5,9 +5,9 @@
     /**
      * Necessary packages
      */
-    use Closure;
     use App\Core\Libs\Request;
     use App\Core\Libs\Response;
+    use App\Core\Libs\Render;
 
     /**
      * Router class
@@ -15,56 +15,30 @@
      */
     class Router
     {
-
         
         /**
-         * Stores all application routes for later use
-         *
-         * @var array
+         * @return array $routes Stores all the routes of the application.
          */
         private static array $routes = [];
 
-        /**
-         * Stores all application get routes for later use
-         *
-         * @param string $path
-         * @param Closure $action
-         * @return void
-         */
-        public static function get(string $path, Closure $action)
+        public static function get(string $path, callable $callback)
         {
             $method = Request::HttpMethod();
             if ($method !== 'GET') return;
-
             $path = trim($path, '/');
             $path = preg_replace('/{[^}]+}/', '(.+)', $path);
-
-            self::$routes[$path] = $action;
+            self::$routes[$path] = $callback;
         }
 
-        /**
-         * Stores all application post routes for later use
-         *
-         * @param string $path
-         * @param Closure $action
-         * @return void
-         */
-        public static function post(string $path, Closure $action)
+        public static function post(string $path, callable $callback)
         {
             $method = Request::HttpMethod();
             if ($method !== 'POST') return;
-
             $path = trim($path, '/');
             $path = preg_replace('/{[^}]+}/', '(.+)', $path);
-            
-            self::$routes[$path] = $action;
+            self::$routes[$path] = $callback;
         }
 
-        /**
-         * resolves all route addresses assigned to the application
-         *
-         * @return void
-         */
         public static function resolve()
         {
             $method = Request::HttpMethod();
@@ -85,12 +59,14 @@
             }
 
             if (!is_callable($callback) || !$callback) {
-                Response::set_status_code(404);
-                render_view('_404');
-                exit;
+                // Response::set_status_code(404);
+                view('welcome');
+                // exit;
             }
 
             call_user_func($callback, ...$params);
+
+            // print_r(self::$routes);
 
         }
 

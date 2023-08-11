@@ -8,6 +8,7 @@
     use Exception;
     use App\Core\Libs\DotEnvProcessor as DotEnv;
     use App\Core\Libs\Application_Config as Config;
+    use App\Core\Libs\Router;
 
     /**
      * Application class
@@ -36,12 +37,14 @@
              */
             $config->use_cors(option: true);
             $config->hide_mistakes(option: true);
+            $dotenv->loadEnvFile(filePath: __DIR__ . '/../../.env');
 
             /**
              * Executions
              */
-            $loadfiles = $this->load_all_files_from(path: __DIR__ . '/../../app/core/helpers/');
-            $dotenv->loadEnvFile(filePath: __DIR__ . '/../../.env');
+            $loadHelpersFiles = $this->load_all_files_from(path: __DIR__ . '/../../app/core/helpers/');
+            $loadRoutesFiles = $this->load_all_files_from(path: __DIR__ . '/../../routes/');
+            Router::resolve();
 
         }
 

@@ -7,7 +7,7 @@
     * @param string $view view path
     * @param array|object $data content data
     */
-    function render_view(string $view, array | object $data = []) 
+    function view(string $view, array | object $data = []) 
     {
         $render = new Render();
         echo $render->view(view: $view, data: $data);

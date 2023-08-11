@@ -9,8 +9,11 @@
      * New application instance:
      */
     $app = new App\Core\Application();
+    use App\Core\Libs\Router;
 
     /**
      * Start the application:
      */
     $app->start(application: 'Atlas Framework');
+
+    // Router::resolve();
