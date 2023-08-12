@@ -49,7 +49,8 @@
             ob_start();
             extract($data);
             require_once $path;
-            return ob_get_clean();
+            $content = ob_get_clean();
+            return $this->Engine(values: $data, content: $content);
 
         }
 
@@ -64,7 +65,8 @@
             ob_start();
             extract($data);
             require_once $path;
-            return ob_get_clean();
+            $content = ob_get_clean();
+            return $this->Engine(values: $data, content: $content);
         }
 
         public function error(int $error, array | object $data = []): string
@@ -78,12 +80,28 @@
             ob_start();
             extract($data);
             require_once $path;
-            return ob_get_clean();
+            $content = ob_get_clean();
+            return $this->Engine(values: $data, content: $content);
         }
 
         public function json(string | array | object $data)
         {
             return json_encode($data, JSON_UNESCAPED_UNICODE);
+        }
+
+        /**
+         * It is the method in charge of replacing the regular expressions necessary to be able to use variables in the following way {{ variable name }}
+         * @param array|object $values The data needed for expression verification
+         * @param string $content content data
+         */
+        private function Engine(array | object $values, string $content)
+        {
+            $engine = preg_replace_callback('/{{\s*@(\w+)\s*}}/', function($matches) use ($values) {
+                $variable = $matches[1];
+                return isset($values[$variable]) ? $values[$variable] : $matches[0];
+            }, $content);
+
+            return $engine;
         }
 
     }

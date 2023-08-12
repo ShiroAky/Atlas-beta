@@ -13,4 +13,4 @@
     /**
      * Application routes
      */
-    Router::post(path: '/', callback: [ HomeController::class, 'index' ]);
+    Router::get(path: '/api/get/{id}', callback: [ HomeController::class, 'index' ]);
