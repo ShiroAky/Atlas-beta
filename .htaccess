@@ -1,2 +1,34 @@
-ErrorDocument 500 "Houston, we have a problem."
-ErrorDocument 404 /views/errors/_404.php
+Options +FollowSymLinks
+Options All -index
+
+RewriteEngine On
+
+# Permitir acceso a archivos y carpetas dentro de public
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(.*)$ /public/$1 [L]
+
+# Permitir visualizar solo archivos de imagen, CSS y JavaScript
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+\.(jpg|jpeg|gif|png|webp|css|js))$ $1 [L]
+
+# Ocultar extensión .php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^([^\.]+)/?$ $1.php [L]
+
+# Ocultar extensión .html
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^([^\.]+)/?$ $1.html [L]
+
+# Denegar acceso directo a archivos y carpetas fuera de public
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ - [F]
+
+# Redirigir a index.php para enlaces amigables
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [L]
