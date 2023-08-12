@@ -15,9 +15,9 @@
     class HomeController 
     {
 
-        public static function index(string $id)
+        public static function index(string $user, int $id)
         {
-            return view('welcome', [ 'id' => $id ]);
+            return view('welcome', [ 'user' => $user, 'id' => $id ]);
             // print_r(Request::get_request_body());
 
             // $texto = "Hola {{ nombre }}, tu edad es {{ edad }}.";

@@ -7,7 +7,9 @@
 </head>
 <body>
     
-    <h1>¡Hello, welcome to Atlas framework! {{ @id }}</h1>
+    <h1>¡Hello, welcome to Atlas framework! {{ @user }}</h1>
+
+    <h2>{{ @id }}</h2>
 
 </body>
 </html>
