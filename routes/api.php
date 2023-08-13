@@ -9,8 +9,9 @@
      * Necessary controllers
      */
     use App\Http\Controllers\HomeController;
+    use App\Http\Controllers\ApiController;
 
     /**
      * Application routes
      */
-    Router::get(path: '/api/get/{user}/{id}', callback: [ HomeController::class, 'index' ]);
+    Router::get(path: '/get/{user}/{id}', callback: [ ApiController::class, 'show' ]);

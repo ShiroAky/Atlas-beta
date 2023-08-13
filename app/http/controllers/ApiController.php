@@ -9,20 +9,20 @@
     use App\Core\Libs\Request;
 
     /**
-     * HomeController class
-     * @package HomeController
+     * ApiController class
+     * @package ApiController
      */
-    class HomeController 
+    class ApiController 
     {
 
         public static function index(string $user, int $id)
         {
-            return view('welcome', [ 'user' => $user, 'id' => $id ]);
+            
         }
 
-        public static function show()
+        public static function show(string $user, int $id)
         {
-            
+            return render_json([ 'user' => $user, 'id' => $id ]);
         }
 
     }
